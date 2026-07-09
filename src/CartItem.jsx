@@ -5,7 +5,7 @@ import './CartItem.css';
 
 const CartItem = ({ onContinueShopping }) => {
   // Récupération des articles du panier depuis le store Redux
- // const cart = useSelector(state => state.cart.items);
+  const cart = useSelector(state => state.cart.items);
  
   const dispatch = useDispatch();
 
