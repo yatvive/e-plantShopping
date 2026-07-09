@@ -1,3 +1,4 @@
+{/*
 import React, { useState, useEffect } from 'react';
 import './ProductList.css'
 import {addItem} from "./CartSlice.jsx";
@@ -18,7 +19,37 @@ function ProductList({ onHomeClick }) {
           [product.name]: true, // Set the current product's name as a key with value 'true' to mark it as added
         }));
       };
+      */}
+
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux'; 
+import './ProductList.css';
+import CartItem from './CartItem';
+import { addItem } from "./CartSlice.jsx"; 
+
+function ProductList({ onHomeClick }) {
+    const [showCart, setShowCart] = useState(false);
+    const [showPlants, setShowPlants] = useState(false); 
+    const [addedToCart, setAddedToCart] = useState({});
+    
+    const dispatch = useDispatch(); 
+
+    // Tâche 4 : Accéder au magasin Redux pour récupérer les articles du panier
+    const cartItems = useSelector(state => state.cart.items);
+
+    // Tâche 4 : Calculer la quantité totale d'articles actuellement dans le panier
+    const calculateTotalQuantity = () => { 
+        return cartItems ? cartItems.reduce((total, item) => total + item.quantity, 0) : 0; 
+    };
+
+    const handleAddToCart = (product) => {
+        dispatch(addItem(product)); // Tâche 4 : Utiliser l'action addItem
       
+        setAddedToCart((prevState) => ({ 
+          ...prevState, 
+          [product.name]: true, 
+        }));
+    };
 
     const plantsArray = [
         {
