@@ -35,7 +35,8 @@ function ProductList({ onHomeClick }) {
     const dispatch = useDispatch(); 
 
     // Tâche 4 : Accéder au magasin Redux pour récupérer les articles du panier
-    const cartItems = useSelector(state => state.cart.items);
+    //const cartItems = useSelector(state => state.cart.items);
+    const cartItems = useSelector(state => state.cart?.items || []);
 
     // Tâche 4 : Calculer la quantité totale d'articles actuellement dans le panier
     const calculateTotalQuantity = () => { 

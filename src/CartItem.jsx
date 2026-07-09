@@ -5,7 +5,8 @@ import './CartItem.css';
 
 const CartItem = ({ onContinueShopping }) => {
   // Récupération des articles du panier depuis le store Redux
-  const cart = useSelector(state => state.cart.items);
+ // const cart = useSelector(state => state.cart.items);
+ 
   const dispatch = useDispatch();
 
   // 1. Coût de tous les articles dans le panier (Tâche 3 - Algorithme forEach)
